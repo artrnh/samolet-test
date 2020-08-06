@@ -10,8 +10,8 @@ export const createAxiosInstance = (config: ApiClientConfig) => {
 
     const proxy = url.format({
         protocol: 'https',
-        hostname: 'thingproxy.freeboard.io',
-        pathname: '/fetch/'
+        hostname: 'cors-anywhere.herokuapp.com',
+        pathname: '/'
     });
 
     const apiHost = url.format({
