@@ -1,0 +1,1 @@
+export {RegionInfo} from './RegionInfo';

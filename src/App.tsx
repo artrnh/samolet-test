@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import {BrowserRouter as Router} from 'react-router-dom';
+
+import {ConfigProvider} from 'antd';
+import ruRU from 'antd/lib/locale-provider/ru_RU';
+
+import {ApiContext} from 'api/useApi';
+import {RegionsApi} from 'api/RegionsApi';
+import config from 'config.json';
+
+import {Root} from 'components/Root';
+
+const api = new RegionsApi(config.api);
+
+const App: React.FC = () => {
+    return (
+        <ApiContext.Provider value={api}>
+            <ConfigProvider locale={ruRU}>
+                <Router>
+                    <Root />
+                </Router>
+            </ConfigProvider>
+        </ApiContext.Provider>
+    );
+};
 
 export default App;
